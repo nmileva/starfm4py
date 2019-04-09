@@ -6,21 +6,14 @@ Created on Thu Dec  6 15:33:49 2018
 """
 
 import zarr
-#import rasterio
 import numpy as np
 import dask.array as da
-#from dask.distributed import Client, progress
 from dask.diagnostics import ProgressBar
 from parameters import (windowSize, logWeight, temp, mid_idx, numberClass, spatImp, 
                         specUncertainty, tempUncertainty, path)
 
  
 
-#cluster = LocalCluster(diagnostics_port=8989, memory_limit="1GB")
-#client = Client(cluster, processes=False)
-# Make a call to the distributed scheduler
-#client = Client(processes=False)
-#print (client)
 
 # Flatten blocks inside a dask array            
 def block2row(array, row, folder, block_id=None):
@@ -43,22 +36,20 @@ def block2row(array, row, folder, block_id=None):
         # Save to (dask) array in .zarr format
         file_name = path + folder + name_string + 'r' + row + '.zarr'
         zarr.save(file_name, flat_array)
-#        da_image = da.from_array(flat_array, chunks=(n,windowSize**2))#windowSize*n
-#        da_image.to_zarr(file_name)
     
     return array
 
 
-# Divide an image in overlapping tiles    
+# Divide an image in overlapping blocks   
 def partition(image, folder):
     image_da = da.from_array(image, chunks = (windowSize,image.shape[1]))
-    image_pad = da.pad(image_da, windowSize//2, mode='constant')#, constant_values=np.nan)
+    image_pad = da.pad(image_da, windowSize//2, mode='constant')
     
     for i in range(0,windowSize):
         row = str(i)
-        tile_i = image_pad[i:,:]
-        tile_i_da = da.rechunk(tile_i, chunks=(windowSize,image_pad.shape[1]))
-        tile_i_da.map_blocks(block2row, dtype=int, row=row, folder=folder).compute()
+        block_i = image_pad[i:,:]
+        block_i_da = da.rechunk(block_i, chunks=(windowSize,image_pad.shape[1]))
+        block_i_da.map_blocks(block2row, dtype=int, row=row, folder=folder).compute()
 
 
 # Create a list of all files in the folder and stack them into one dask array
@@ -76,8 +67,7 @@ def da_stack(folder, shape):
                 da_list.append(da_array) 
             except Exception:
                 continue
-    
-# chunks size should be between 10 MB and 1 GB    
+      
     return da.rechunk(da.concatenate(da_list, axis=0), chunks = (shape[1],windowSize**2))
 
 
@@ -203,36 +193,19 @@ def predict(fine_image_t0, coarse_image_t0, coarse_image_t1, shape):
                                temp_diff)
     weights = weighting(spec_dist, temp_dist, comb_dist, similar_pixels)    
     pred_refl = fine_image_t0 + temp_diff
-    weighted_pred_refl = da.sum(pred_refl*weights, axis=1)  
-    print (weighted_pred_refl)   
+    weighted_pred_refl = da.sum(pred_refl*weights, axis=1)   
     prediction = da.reshape(weighted_pred_refl, shape)
     print ("Done prediction!")
     
     return prediction
     
  
-# Compute the results (converts the dask array to numpy array)   
+# Compute the results (converts the dask array to a numpy array)   
 def starfm(fine_image_t0, coarse_image_t0, coarse_image_t1, profile, shape):
     print ('Processing...')
-#    prediction = predict(fine_image_t0, coarse_image_t0, coarse_image_t1, shape) #NEW
     prediction_da = predict(fine_image_t0, coarse_image_t0, coarse_image_t1, shape)
-#    client.persist(prediction)
-#    #prediction_da = prediction_da.persist()
-#    progress(prediction_da)
-#    prediction = client.persist(prediction_da)#prediction_da.compute()
-#    print (prediction)
-#    prediction_da.visualize()
     with ProgressBar():
          prediction = prediction_da.compute()
-#    print ('Writing product...')
-##    profile = product.profile
-#    profile.update(dtype='float64', count=1) # number of bands
-#    file_name = path + str(count) + '_prediction.tif'
-#
-#    result = rasterio.open(file_name, 'w', count=1, width = shape[1], height = sliceHeight,
-#                           driver = 'GTiff', dtype= 'float64')#rasterio.open(file_name, 'w', **profile)#rasterio.open(file_name, 'w', **defaults(count=1))# 
-#    result.write(prediction, 1)
-#    result.close()
     
     return prediction
 
