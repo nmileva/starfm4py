@@ -15,6 +15,12 @@ Bovolo, F. (Eds.), *SPIE Proceedings Vol. 10789: Image and Signal Processing for
 Sensing XXIV*. Berlin, Germany: International Society for Optics and Photonics. doi:
 10.1117/12.2327091; https://doi.org/10.1117/12.2327091
 
+## Installation
+It is recommended to use the [Anaconda distribution] (https://www.anaconda.com/distribution/) for Python 3. Run the below code from the Anaconda prompt by replacing *myenv* with a name of your choice. For exact list of the requirements, check the [requirements file] (requirements.txt).
+```
+conda create -n myenv dask rasterio zarr matplotlib
+```
+
 ## Usage
 Certain degree of similarity between the images is needed before they can be blended. The most common harmonization steps are:
 + **atmospheric correction**; in case a surface reflectance product is not already available, the atmospheric correction will be the first step to be performed; the algorithm to be used depends on the satellite sensor; popular atmospheric correction models for Sentinel-2 and Sentinel-3 (OLCI) are iCor, Sen2Cor, SMAC, etc.
