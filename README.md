@@ -16,7 +16,7 @@ Sensing XXIV*. Berlin, Germany: International Society for Optics and Photonics. 
 10.1117/12.2327091; https://doi.org/10.1117/12.2327091
 
 ## Installation
-It is recommended to use the [Anaconda distribution](https://www.anaconda.com/distribution/) for Python 3. Run the below code from the Anaconda prompt by replacing *myenv* with a name of your choice. For exact list of the requirements, check the [requirements file](requirements.txt).
+It is recommended to use the [Anaconda distribution](https://www.anaconda.com/distribution/) for Python 3. Run the below code from the Anaconda prompt by replacing *myenv* with a name of your choice. For exact list of requirements, check the [requirements file](requirements.txt).
 ```
 conda create -n myenv dask rasterio zarr matplotlib
 ```
@@ -27,6 +27,6 @@ STARFM was initially developed to blend Landsat and MODIS images. The current im
 + **cloud masking**; cloud pixels should be excluded;
 + **re-projection**; all images should be in the same cartographic coordinate system (e.g. WGS84 UTM 30N)
 + **resampling** to same pixel size, that is usually the pixel size of the fine resolution image;
-+ **co-registration** of the images; the images should not only have the exact same extent but they should also match on (sub-)pixel level; useful tools for co-registration are AROSICS (https://pypi.org/project/arosics/), GeFolki (https://w3.onera.fr/medusa/gefolki), etc.
++ **co-registration** of the images; the images should not only have the exact same extent but they should also match on (sub-)pixel level; useful tools for co-registration are [AROSICS](https://pypi.org/project/arosics/), [GeFolki](https://w3.onera.fr/medusa/gefolki), etc.
 + **bandpass adjustment** (not mandatory)
 + **BRDF normalization** (not mandatory)
