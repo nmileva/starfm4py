@@ -23,10 +23,10 @@ conda create -n myenv dask rasterio zarr matplotlib
 
 ## Usage
 STARFM was initially developed to blend Landsat and MODIS images. The current implementation is not sensor specific and can be used for other sensor pairs such as Sentinel-2 and Sentinel-3 (OLCI). Certain degree of similarity between the images is needed before they can be blended. The most common harmonization steps are:
-+ **atmospheric correction** - in case a surface reflectance product is not already available, the atmospheric correction will be the first step to be performed; the algorithm to be used depends on the satellite sensor; popular atmospheric correction models for Sentinel-2 and/or Sentinel-3 (OLCI) are [iCor](https://blog.vito.be/remotesensing/icor-for-sentinel-3), [Sen2Cor](http://step.esa.int/main/third-party-plugins-2/sen2cor/), [SMAC](http://www.cesbio.ups-tlse.fr/multitemp/?p=6013), etc.
++ **atmospheric correction** - in case a surface reflectance product is not already available, the atmospheric correction will be the first step to be performed; the algorithm to be used depends on the satellite sensor; popular atmospheric correction models for Sentinel-2 and Sentinel-3 (OLCI) are [iCor](https://blog.vito.be/remotesensing/icor-for-sentinel-3), [Sen2Cor](http://step.esa.int/main/third-party-plugins-2/sen2cor/), [SMAC](http://www.cesbio.ups-tlse.fr/multitemp/?p=6013), etc.
 + **cloud masking** - cloud pixels should be excluded;
 + **re-projection** - all images should be in the same cartographic coordinate system (e.g. [WGS84 UTM 35N](http://spatialreference.org/ref/epsg/32635/));
 + **resampling** to same pixel size, that is usually the pixel size of the fine resolution image;
 + **co-registration** of the images - the images should not only have the exact same extent but they should also match on (sub-)pixel level; useful tools for co-registration are [AROSICS](https://pypi.org/project/arosics/), [GeFolki](https://w3.onera.fr/medusa/gefolki), etc.
-+ **bandpass adjustment** (not mandatory)
-+ **BRDF normalization** (not mandatory)
++ **bandpass adjustment** (not mandatory);
++ **BRDF normalization** (not mandatory);
