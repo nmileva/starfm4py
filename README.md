@@ -7,7 +7,7 @@ The aim of this study is to make fusion products more accessible to users by pro
 
 ## How to cite?
 
-If you use this code for published work, please cite it using the reference below or the BibTex file provided above:
+If you use this code for published work, please cite it using the reference below or the [BibTex file](citation.bib):
 
 Mileva, N., Mecklenburg, S. & Gascon, F. (2018). New tool for spatiotemporal image fusion in
 remote sensing - a case study approach using Sentinel-2 and Sentinel-3 data. In Bruzzone, L. &
