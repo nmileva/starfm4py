@@ -7,20 +7,19 @@ import numpy as np
 windowSize = 31
 
 # Set the path where the results should be stored
-path = 'C:/Users/Nikolina Mileva/Desktop/STARFM_demo/'
+path = 'STARFM_demo/'
 
 # Set to True if you want to decrease the sensitivity to the spectral distance
 logWeight = False
 
 # If more than one training pairs are used, set to True
-# Check line 332 from StarFM_compute.c
 temp = False
 
 # The spatial impact factor is a constant defining the relative importance of 
 # spatial distance (in meters)
 # Take a smaller value of the spatial impact factor for heterogeneous regions 
 # (e.g. A = 150 m)
-spatImp = 150 # default 450; 150 for heterogeneous areas; 25 cuSTARFM
+spatImp = 150 
 
 # increasing the number of classes limits the number of similar pixels
 numberClass = 4 
@@ -31,7 +30,7 @@ uncertaintyFineRes = 0.03
 
 # Set the uncertainty value for the coarse resolution sensor
 # https://sentinels.copernicus.eu/web/sentinel/technical-guides/sentinel-3-olci/validation
-uncertaintyCoarseRes = 0.03 #0.025 
+uncertaintyCoarseRes = 0.03
 
 # Other global variables
 mid_idx = (windowSize**2)//2
@@ -41,7 +40,7 @@ tempUncertainty = np.sqrt(2*uncertaintyCoarseRes**2)
 # Set the size of the slices in which to divide the image
 # This number should be multiple of the image height and not bigger than it
 # Use bigger size for small images
-sizeSlices = 172 #1146 #3247 #1021
+sizeSlices = 172
 
 
 
