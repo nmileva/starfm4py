@@ -16,7 +16,7 @@ Sensing XXIV*. Berlin, Germany: International Society for Optics and Photonics. 
 10.1117/12.2327091; https://doi.org/10.1117/12.2327091
 
 ## Installation
-It is recommended to use the [Anaconda distribution](https://www.anaconda.com/distribution/) for Python 3. Run the below code from the Anaconda prompt by replacing *myenv* with a name of your choice. For exact list of requirements, check the [requirements file](requirements.txt).
+It is recommended to use the [Anaconda distribution](https://www.anaconda.com/distribution/) for Python 3. Run the below code from the Anaconda prompt by replacing *myenv* with a name of your choice. For the full list of requirements, check the [requirements file](requirements.txt).
 ```
 conda create -n myenv dask rasterio zarr matplotlib
 ```
