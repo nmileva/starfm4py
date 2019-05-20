@@ -27,6 +27,6 @@ STARFM was initially developed to blend Landsat and MODIS images. The current im
 + **cloud masking** - cloud pixels should be excluded;
 + **re-projection** - all images should be in the same cartographic coordinate system (e.g. [WGS84 UTM 35N](http://spatialreference.org/ref/epsg/32635/));
 + **resampling** to same pixel size, that is usually the pixel size of the fine resolution image;
-+ **co-registration** of the images - the images should not only have the exact same extent but they should also match on (sub-)pixel level; useful tools for co-registration are [AROSICS](https://pypi.org/project/arosics/), [GeFolki](https://w3.onera.fr/medusa/gefolki), etc.
++ **co-registration** of the images - the images should not only have the exact same extent but they should also match on (sub-)pixel level; useful tools for co-registration are [AROSICS](https://pypi.org/project/arosics/), [GeFolki](https://w3.onera.fr/medusa/gefolki), [eo-learn](https://eo-learn.readthedocs.io/en/latest/eotasks.html#coregistration), etc.
 + **bandpass adjustment** (not mandatory);
 + **BRDF normalization** (not mandatory);
