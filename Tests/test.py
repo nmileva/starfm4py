@@ -14,7 +14,7 @@ start = time.time()
 #Set the path where the images are stored
 product = rasterio.open('Test_3/sim_Landsat_t1.tif')
 profile = product.profile
-LandsatT0 = rasterio.open('Test_3/sim_Landsat_t0.tif').read(1)
+LandsatT0 = rasterio.open('Test_3/sim_Landsat_t1.tif').read(1)
 MODISt0 = rasterio.open('Test_3/sim_MODIS_t1.tif').read(1)
 MODISt1 = rasterio.open('Test_3/sim_MODIS_t4.tif').read(1)
 
