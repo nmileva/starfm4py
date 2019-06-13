@@ -40,7 +40,7 @@ tempUncertainty = np.sqrt(2*uncertaintyCoarseRes**2)
 # Set the size of the slices in which to divide the image
 # This number should be multiple of the image height and not bigger than it
 # Use bigger size for small images
-sizeSlices = 172
+sizeSlices = 150
 
 
 
