@@ -30,3 +30,5 @@ STARFM was initially developed to blend Landsat and MODIS images. The current im
 + **co-registration** of the images - the images should not only have the exact same extent but they should also match on (sub-)pixel level; useful tools for co-registration are [AROSICS](https://pypi.org/project/arosics/), [GeFolki](https://w3.onera.fr/medusa/gefolki), [eo-learn](https://eo-learn.readthedocs.io/en/latest/eotasks.html#coregistration), [pyelastix](https://github.com/almarklein/pyelastix), etc.
 + **bandpass adjustment** (not mandatory);
 + **BRDF normalization** (not mandatory);
+
+For an example of usage check [test.py](Tests/test.py). To apply the algorithm on other images, make sure to adjust the variables in [parameters.py](parameters.py).
