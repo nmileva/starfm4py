@@ -31,4 +31,4 @@ STARFM was initially developed to blend Landsat and MODIS images. The current im
 + **bandpass adjustment** (not mandatory);
 + **BRDF normalization** (not mandatory);
 
-For an example of usage check [test.py](Tests/test.py). To apply the algorithm on other images, make sure to adjust the variables in [parameters.py](parameters.py).
+For an example of usage check [test.py](Tests/test.py). To apply the algorithm on other images, make sure to adjust the variables in [parameters.py](src/parameters.py).
