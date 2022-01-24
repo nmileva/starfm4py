@@ -15,6 +15,8 @@ Bovolo, F. (Eds.), *SPIE Proceedings Vol. 10789: Image and Signal Processing for
 Sensing XXIV*. Berlin, Germany: International Society for Optics and Photonics. doi:
 10.1117/12.2327091; https://doi.org/10.1117/12.2327091
 
+A copy of the aper can be downloaded here: https://opus.bibliothek.uni-augsburg.de/opus4/frontdoor/index/index/docId/78805
+
 ## Installation
 It is recommended to use the [Anaconda distribution](https://www.anaconda.com/distribution/) for Python 3. Run the below code from the Anaconda prompt by replacing *myenv* with a name of your choice. For the full list of requirements, check the [requirements file](requirements.txt).
 ```
